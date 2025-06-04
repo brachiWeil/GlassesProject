@@ -1,0 +1,14 @@
+const express = require("express");
+const Eyeglass = require("../models/eyeglasses");
+const router = express.Router();
+router.get("/", async (req, res) => {
+    try {
+      const glasses = await Eyeglass.find()
+      res.json(glasses);
+  
+    }
+    catch (err) {
+        res.status(500).json({ error: "שגיאה בקריאת משקפי הראיה" });
+    }
+  });
+module.exports = router;

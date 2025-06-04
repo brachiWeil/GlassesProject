@@ -1,0 +1,71 @@
+const express = require("express");
+const { ObjectId } = require("mongodb");
+const Cart = require("../models/cart");
+const router = express.Router();
+router.post("/", async (req, res) => {
+    const glasses = req.body;
+    try {
+        const existing = await Cart.findOne({ "glasses._id": glasses._id });
+
+        if (existing) {
+            existing.count += 1;
+            await existing.save();
+        } else {
+            const newItem = new Cart({ glasses, count: 1 });
+            await newItem.save();
+        }
+
+        const updatedCart = await Cart.find();
+        res.json(updatedCart);
+    } catch (err) {
+        res.status(500).json({ error: "שגיאה בהוספת מוצר לעגלה" });
+    }
+});
+
+router.delete("/removeAll/:id", async (req, res) => {
+    const glassesId = req.params.id;
+    try {
+        const item = await Cart.findOne({ "glasses._id": glassesId });
+
+        if (item) {
+            await Cart.deleteOne({ _id: item._id });
+        }
+
+        const updatedCart = await Cart.find();
+        res.json(updatedCart);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "שגיאה בהסרת כל הפריטים מהעגלה" });
+    }
+});
+
+router.delete("/:id", async (req, res) => {
+    const glassesId = req.params.id;
+    try {
+        const item = await Cart.findOne({ "glasses._id": glassesId });
+
+        if (item) {
+            if (item.count > 1) {
+                item.count -= 1;
+                await item.save();
+            } else {
+                await Cart.deleteOne({ _id: item._id });
+            }
+        }
+
+        const updatedCart = await Cart.find();
+        res.json(updatedCart);
+    } catch (err) {
+        res.status(500).json({ error: "שגיאה בהסרת מוצר מהעגלה" });
+    }
+});
+
+router.get("/", async (req, res) => {
+    try {
+        const cart = await Cart.find();
+        res.json(cart);
+    } catch {
+        res.status(500).json({ error: "שגיאה בשליפת עגלה" });
+    }
+});
+module.exports = router;
