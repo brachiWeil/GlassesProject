@@ -1,9 +1,9 @@
-# GlassesProject
+GlassesProject
 🕶️ Glasses Store - Virtual Try-On E-commerce App
-פרויקט חנות משקפיים אינטראקטיבי עם אפשרות למדוד משקפיים וירטואלית על תמונה שהמשתמש מעלה, להוסיף/להסיר מוצרים מהעגלה, ולעבור תהליך רכישה .
+An interactive glasses store project that allows users to virtually try on glasses using an uploaded photo, add/remove products from the cart, and complete a purchase process.
 
-🧱 טכנולוגיות
-Frontend (צד לקוח):
+🧱 Technologies
+Frontend:
 
 React
 
@@ -11,7 +11,7 @@ Redux
 
 Material-UI (MUI)
 
-Backend (צד שרת):
+Backend:
 
 Node.js
 
@@ -19,33 +19,39 @@ Express.js
 
 MongoDB + Mongoose
 
-📄 תכונות עיקריות
-🏠 דף בית
-תצוגת קטלוג משקפיים.
+📄 Key Features
 
-עיצוב מודרני וידידותי למשתמש עם MUI.
+🏠 Home Page
 
-🛍️ עגלת קניות
-הוספה והסרה של מוצרים לעגלה.
+Glasses catalog display
 
-שינוי כמות לכל מוצר.
+Modern, user-friendly design with MUI
 
-סיכום ביניים של העגלה.
+🛍️ Shopping Cart
 
-🧑‍💻 מדידה וירטואלית
-העלאת תמונה אישית.
+Add and remove products from the cart
 
-הצגת המשקפיים על התמונה (Overlay).
+Adjust quantity per product
 
-מאפשר לנסות כל זוג ויזואלית לפני הרכישה.
+Cart summary
 
-💳 עמוד תשלום
-סיכום ההזמנה.
+🧑‍💻 Virtual Try-On
 
-כפתור "לתשלום" שסוגר את ההזמנה, .
+Upload a personal photo
 
-🗂️ ניהול נתונים
-כל הנתונים (מוצרים, עגלות, הזמנות) נשמרים בבסיס הנתונים MongoDB.
+Overlay glasses on the photo
 
-צד שרת בנוי עם Express API.
+Try on any pair visually before purchasing
+
+💳 Checkout Page
+
+Order summary
+
+"Proceed to Payment" button that finalizes the order
+
+🗂️ Data Management
+
+All data (products, carts, orders) stored in MongoDB
+
+Backend built with Express API
 
